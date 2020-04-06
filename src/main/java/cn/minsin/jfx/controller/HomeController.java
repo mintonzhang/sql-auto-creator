@@ -48,7 +48,7 @@ public class HomeController implements Initializable {
     private File file;
 
     public void about(ActionEvent actionEvent) throws URISyntaxException, IOException {
-        Desktop.getDesktop().browse(new URI("https://github.com/mintonzhang"));
+        Desktop.getDesktop().browse(new URI("https://github.com/mintonzhang/sql-auto-creator"));
     }
 
     public void downLoadTemplate(ActionEvent actionEvent) throws IOException {
