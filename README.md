@@ -9,9 +9,9 @@
 1. JDK版本大于1.8
 2. JAVA_HOME需要在环境变量中配置
 
-## 版本更新日志[全部版本](https://github.com/mintonzhang/sql-auto-creator/tree/sql-auto-creator/jars/)
+## 版本更新日志
 
-### #1.0版本
+### #1.0版本[点我下载](https://github.com/mintonzhang/sql-auto-creator/releases/download/1.0/sql-auto-creator-1.0.RELEASE.jar)
 
 1. 提供模板下载功能，然后将需要创建的字段按照要求进行填写到excel中(Excel可以保存为项目所需要的DB设计)
 2. 然后打开双击jar包(前提是已经配置了环境变量)否则需要自行使用命令启动 启动命令为 java -jar xxxx
