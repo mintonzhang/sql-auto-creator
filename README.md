@@ -9,7 +9,7 @@
 1. JDK版本大于1.8
 2. JAVA_HOME需要在环境变量中配置
 
-## 版本更新日志
+## 版本更新日志[查看所有](https://github.com/mintonzhang/sql-auto-creator/releases)
 
 ### #1.0版本[点我下载](https://github.com/mintonzhang/sql-auto-creator/releases/download/1.0/sql-auto-creator-1.0.RELEASE.jar)
 
