@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import lombok.Cleanup;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -65,15 +66,14 @@ public class HomeController implements Initializable {
             if (absoluteFile.exists()) {
                 absoluteFile.delete();
             }
+            @Cleanup
             InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("template/template.xlsx");
             if (inputStream != null) {
                 FileOutputStream fileOutputStream = new FileOutputStream(absoluteFile);
                 byte[] bytes = new byte[1024];
-                int read = 0;
-                while ((read=inputStream.read(bytes)) != -1) {
-                    fileOutputStream.write(bytes,0,read);
+                while (inputStream.read(bytes) != -1) {
+                    fileOutputStream.write(bytes);
                 }
-                fileOutputStream.close();
                 Desktop.getDesktop().open(absoluteFile);
             }
         }
@@ -93,7 +93,7 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> charSet = FXCollections.observableArrayList(Mysql.list);
+        ObservableList<String> charSet = FXCollections.observableArrayList(new Mysql().allCharset());
         databaseCharset.setItems(charSet);
         databaseCharset.setValue(charSet.get(0));
     }
@@ -137,7 +137,6 @@ public class HomeController implements Initializable {
                 }
                 FileOutputStream fileOutputStream = new FileOutputStream(absoluteFile);
                 fileOutputStream.write(sql.toString().getBytes());
-                fileOutputStream.close();
                 Desktop.getDesktop().open(absoluteFile);
             }
         } catch (Exception e) {

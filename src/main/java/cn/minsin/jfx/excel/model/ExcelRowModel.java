@@ -1,14 +1,11 @@
 package cn.minsin.jfx.excel.model;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Getter
 @Setter
@@ -30,34 +27,11 @@ public class ExcelRowModel{
      */
     private List<ExcelCellModel> cells = new ArrayList<>(10);
 
-    @Setter(AccessLevel.NONE)
-    @Getter(AccessLevel.NONE)
-    protected Map<Integer, ExcelCellModel> cache;
-
     /**
      * 赋值
      */
     public void addCells(ExcelCellModel cell) {
-        this.cells.add(cell);
-    }
-
-    /**
-     *
-     * @param index Excel中Cell的下标
-     * @return 对应Cell的value
-     */
-    public String getCell(int index) {
-        if (this.cache == null) {
-            this.cache = new ConcurrentHashMap<>(cells.size());
-            for (ExcelCellModel cell : cells) {
-                this.cache.put(cell.getCellIndex(), cell);
-            }
-        }
-        boolean b = this.cache.containsKey(index);
-        if(!b){
-            return "";
-        }
-        return this.cache.get(index).getCellValue();
+        cells.add(cell);
     }
 
 }

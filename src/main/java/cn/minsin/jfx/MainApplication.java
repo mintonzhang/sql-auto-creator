@@ -1,5 +1,6 @@
 package cn.minsin.jfx;
 
+import cn.minsin.jfx.constant.GlobalVariables;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,12 +23,11 @@ public class MainApplication extends Application {
         primaryStage.setTitle("SQL生成工具");
         primaryStage.setResizable(false);
         Scene scene = new Scene(root);
-        primaryStage.centerOnScreen();
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();
         primaryStage.getIcons().add(new Image("template/icon.png"));
-//        primaryStage.setWidth(GlobalVariables.width);
-//        primaryStage.setHeight(GlobalVariables.height);
+        primaryStage.setWidth(GlobalVariables.width);
+        primaryStage.setHeight(GlobalVariables.height);
         primaryStage.show();
     }
 

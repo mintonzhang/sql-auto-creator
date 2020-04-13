@@ -8,15 +8,8 @@ import java.lang.reflect.Method;
  * @since: 2020/4/6 19:05
  */
 public enum DBType {
-    /**
-     * mysql
-     */
     Mysql("Mysql", cn.minsin.jfx.enums.Mysql.class),
-    /**
-     * oracle
-     */
     Oracle("Oracle", cn.minsin.jfx.enums.Mysql.class);
-
     private String name;
 
     private Class<?> clazz;

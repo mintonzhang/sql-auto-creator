@@ -1,8 +1,6 @@
 package cn.minsin.jfx.enums;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,17 +13,11 @@ public class Mysql {
 
     private static Map<String, String> charsets = new HashMap<>(4);
 
-    public static List<String> list = new ArrayList<>(4);
-
     static {
         charsets.put("UTF-8", "UTF8");
         charsets.put("UTF-16", "UTF16");
         charsets.put("UTF-32", "UTF32");
         charsets.put("UTF-8MB4", "UTF8MB4");
-        list.add("UTF-8MB4");
-        list.add("UTF-8");
-        list.add("UTF-16");
-        list.add("UTF-32");
     }
 
 

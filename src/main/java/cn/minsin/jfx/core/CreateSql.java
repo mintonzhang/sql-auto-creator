@@ -2,12 +2,12 @@ package cn.minsin.jfx.core;
 
 import cn.minsin.core.tools.StringUtil;
 import cn.minsin.jfx.constant.DefaultConstant;
+import cn.minsin.jfx.excel.model.ExcelCellModel;
 import cn.minsin.jfx.excel.model.ExcelParseResultModel;
 import cn.minsin.jfx.excel.model.ExcelRowModel;
 import cn.minsin.jfx.excel.model.ExcelSheetModel;
-import cn.minsin.jfx.excel.model.SheetParseRule;
 import cn.minsin.jfx.model.TableModel;
-import cn.minsin.jfx.override.ExcelParseFunctions;
+import cn.minsin.jfx.override.ExcelParse;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -15,7 +15,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -47,40 +46,39 @@ public class CreateSql {
     }
 
 
+
+
     public static List<TableModel> parse(InputStream in) throws IOException {
 
-        List<Integer> cellList = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+        int[] cellList = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-
-        ExcelParseResultModel parse = ExcelParseFunctions
-                .initByInputStream(in).addSheetRules(SheetParseRule.create(0,0,cellList)).parse();
-
+        ExcelParseResultModel parse = ExcelParse.initByInputStream(in).sheetParse(3).rowParse(0).cellParse(cellList).parse();
 
         List<TableModel> list = new ArrayList<>(10);
 
-        for (ExcelSheetModel sheetModel : parse.getSheets()) {
+        for (ExcelSheetModel sheetModel : parse.getRows()) {
             List<ExcelRowModel> rows = sheetModel.getRows();
             TableModel model = null;
             List<TableModel.Column> cs = null;
             boolean flag = false;
             for (ExcelRowModel row : rows) {
-//                List<ExcelCellModel> cells = row.getCells();
-                String cellRealValue0 = row.getCell(0);
-                String cellRealValue1 = row.getCell(1);
-                String cellRealValue2 = row.getCell(2);
-                String cellRealValue3 = row.getCell(3);
-                String cellRealValue4 = row.getCell(4);
-                String cellRealValue5 = row.getCell(5);
-                String cellRealValue6 = row.getCell(6);
-                String cellRealValue7 = row.getCell(7);
-                String cellRealValue8 = row.getCell(8);
-                String cellRealValue9 = row.getCell(9);
+                List<ExcelCellModel> cells = row.getCells();
+                String cellRealValue0 = cells.get(0).getCellValue();
+                String cellRealValue1 = cells.get(1).getCellValue();
+                String cellRealValue2 = cells.get(2).getCellValue();
+                String cellRealValue3 = cells.get(3).getCellValue();
+                String cellRealValue4 = cells.get(4).getCellValue();
+                String cellRealValue5 = cells.get(5).getCellValue();
+                String cellRealValue6 = cells.get(6).getCellValue();
+                String cellRealValue7 = cells.get(7).getCellValue();
+                String cellRealValue8 = cells.get(8).getCellValue();
+                String cellRealValue9 = cells.get(9).getCellValue();
                 if (StringUtil.isAllBlank(cellRealValue0, cellRealValue1, cellRealValue2, cellRealValue3,
                         cellRealValue4, cellRealValue5, cellRealValue6, cellRealValue7, cellRealValue8,
                         cellRealValue9)) {
                     continue;
                 }
-                if ("start".equalsIgnoreCase(cellRealValue0)) {
+                if (cellRealValue0 != null && cellRealValue0.equalsIgnoreCase("start")) {
                     model = new TableModel();
                     cs = new ArrayList<>();
                     model.setRemark(cellRealValue2);
@@ -107,7 +105,7 @@ public class CreateSql {
                     c.setRemark(cellRealValue9);
                     cs.add(c);
                 }
-                if ("end".equalsIgnoreCase(cellRealValue0)) {
+                if (cellRealValue0 != null && cellRealValue0.equalsIgnoreCase("end")) {
                     if (model != null) {
                         list.add(model);
                         cs = null;
