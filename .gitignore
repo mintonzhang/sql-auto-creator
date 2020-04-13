@@ -9,3 +9,4 @@ retrofitapi/
 dependency-reduced-pom.xml
 target
 *.iml
+sh.exe.stackdump
