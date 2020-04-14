@@ -78,7 +78,7 @@ public class CreateSql {
                         cellRealValue9)) {
                     continue;
                 }
-                if (cellRealValue0 != null && cellRealValue0.equalsIgnoreCase("start")) {
+                if ("start".equalsIgnoreCase(cellRealValue0)) {
                     model = new TableModel();
                     cs = new ArrayList<>();
                     model.setRemark(cellRealValue2);
@@ -105,7 +105,7 @@ public class CreateSql {
                     c.setRemark(cellRealValue9);
                     cs.add(c);
                 }
-                if (cellRealValue0 != null && cellRealValue0.equalsIgnoreCase("end")) {
+                if ("end".equalsIgnoreCase(cellRealValue0)) {
                     if (model != null) {
                         list.add(model);
                         cs = null;
