@@ -16,6 +16,8 @@ public class ExcelSheetModel {
 
     private String sheetName;
 
+    private int sheetIndex;
+
     private List<ExcelRowModel> rows = new ArrayList<>(10);
 
     /**

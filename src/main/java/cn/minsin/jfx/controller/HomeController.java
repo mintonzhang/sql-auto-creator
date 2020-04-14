@@ -69,8 +69,9 @@ public class HomeController implements Initializable {
             if (inputStream != null) {
                 FileOutputStream fileOutputStream = new FileOutputStream(absoluteFile);
                 byte[] bytes = new byte[1024];
-                while (inputStream.read(bytes) != -1) {
-                    fileOutputStream.write(bytes);
+                int read = 0;
+                while ((read=inputStream.read(bytes)) != -1) {
+                    fileOutputStream.write(bytes,0,read);
                 }
                 fileOutputStream.close();
                 Desktop.getDesktop().open(absoluteFile);
@@ -92,7 +93,7 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> charSet = FXCollections.observableArrayList(new Mysql().allCharset());
+        ObservableList<String> charSet = FXCollections.observableArrayList(Mysql.list);
         databaseCharset.setItems(charSet);
         databaseCharset.setValue(charSet.get(0));
     }
