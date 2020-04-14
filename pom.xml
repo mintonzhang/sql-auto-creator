@@ -31,17 +31,30 @@
             <groupId>cn.minsin</groupId>
             <artifactId>mutils-core</artifactId>
             <version>0.1.6.RELEASE</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework</groupId>
-                    <artifactId>spring-core</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.httpcomponents</groupId>
-                    <artifactId>httpclient</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>cn.minsin</groupId>-->
+        <!--            <artifactId>mutils-excel</artifactId>-->
+        <!--            <version>0.4.3.RELEASE</version>-->
+        <!--            <exclusions>-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>org.springframework</groupId>-->
+        <!--                    <artifactId>spring-core</artifactId>-->
+        <!--                </exclusion>-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>org.apache.httpcomponents</groupId>-->
+        <!--                    <artifactId>httpclient</artifactId>-->
+        <!--                </exclusion>-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>cn.minsin</groupId>-->
+        <!--                    <artifactId>mutils-spring-boot-starter</artifactId>-->
+        <!--                </exclusion-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>cn.minsin</groupId>-->
+        <!--                    <artifactId>mutils-spring-boot-starter</artifactId>-->
+        <!--                </exclusion>-->
+        <!--            </exclusions>-->
+        <!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
@@ -62,6 +75,14 @@
             <version>1.18.0</version>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <!-- 默认优先获取阿里云的依赖-->
+            <id>aliyun</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+        </repository>
+
+    </repositories>
 
     <build>
         <plugins>
