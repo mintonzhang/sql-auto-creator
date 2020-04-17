@@ -33,6 +33,16 @@
             <groupId>cn.minsin</groupId>
             <artifactId>mutils-core</artifactId>
             <version>0.1.6.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                        <groupId>org.apache.httpcomponents</groupId>
+                        <artifactId>httpclient</artifactId>
+                </exclusion>
+                <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
